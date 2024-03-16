@@ -1,13 +1,13 @@
-### Recuperar todas las películas
+### GET todos los productos
 GET http://localhost:8989/products
 
-### Recuperar una película por id
+### GET un producto por id
 GET http://localhost:8989/products/1
 
-### Recuperar todas las películas por un género
+### GET todos los productos de una categoría
 GET http://localhost:8989/products?category=smartphones
 
-### Crear una película con POST
+### Crear un producto con POST
 POST http://localhost:8989/products
 Content-Type: application/json
 
@@ -32,10 +32,10 @@ Content-Type: application/json
     ]
 }
 
-### Borrar una película
-DELETE http://localhost:8989/products/1
+### DELETE un producto por id
+DELETE http://localhost:8989/products/1b231ebc-261a-4c2a-aba9-8f19c0b1db0b
 
-### Actualizar una película
+### PATCH un producto por id
 PATCH http://localhost:8989/products/1
 Content-Type: application/json
 

@@ -7,7 +7,7 @@ export class ProductModel {
   static async getAll ({ category }) {
     if (category) {
       return products.filter(
-        product => product.category.some(g => g.toLowerCase() === category.toLowerCase())
+        product => product.category.toLowerCase() === category.toLowerCase()
       )
     }
 
@@ -15,7 +15,7 @@ export class ProductModel {
   }
 
   static async getById ({ id }) {
-    const product = products.find(product => product.id === id)
+    const product = products.find(product => product.id == id)
     return product
   }
 
@@ -39,7 +39,7 @@ export class ProductModel {
   }
 
   static async update ({ id, input }) {
-    const productIndex = products.findIndex(product => product.id === id)
+    const productIndex = products.findIndex(product => product.id == id)
     if (productIndex === -1) return false
 
     products[productIndex] = {

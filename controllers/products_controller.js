@@ -1,5 +1,5 @@
-import { ProductModel } from '../models/local/product.js'
-import { validateProduct, validatePartialProduct } from '../schemas/products.js'
+import { ProductModel } from '../models/local/product_local_model.js'
+import { validateProduct, validatePartialProduct } from '../schemas/products_schema.js'
 
 export class ProductController {
   static async getAll (req, res) {

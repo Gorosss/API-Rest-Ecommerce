@@ -1,6 +1,6 @@
 import express, { json } from 'express' 
-import { productsRouter } from './routes/products.js'
-import { corsMiddleware } from './middlewares/cors.js'
+import { productsRouter } from './routes/products_route.js'
+import { corsMiddleware } from './middlewares/cors_middleware.js'
 
 const app = express()
 app.use(json())
