@@ -33,7 +33,7 @@ Content-Type: application/json
 }
 
 ### DELETE un producto por id
-DELETE http://localhost:8989/products/1b231ebc-261a-4c2a-aba9-8f19c0b1db0b
+DELETE http://localhost:8989/products/f9d3098d-b0b6-46cc-b4bf-d7e5328a1d82
 
 ### PATCH un producto por id
 PATCH http://localhost:8989/products/1

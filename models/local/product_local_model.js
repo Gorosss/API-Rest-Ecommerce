@@ -31,7 +31,7 @@ export class ProductModel {
   }
 
   static async delete ({ id }) {
-    const productIndex = products.findIndex(product => product.id === id)
+    const productIndex = products.findIndex(product => product.id == id)
     if (productIndex === -1) return false
 
     products.splice(productIndex, 1)
