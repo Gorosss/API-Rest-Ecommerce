@@ -1,0 +1,45 @@
+### Recuperar todas las películas
+GET http://localhost:8989/products
+
+### Recuperar una película por id
+GET http://localhost:8989/products/1
+
+### Recuperar todas las películas por un género
+GET http://localhost:8989/products?category=smartphones
+
+### Crear una película con POST
+POST http://localhost:8989/products
+Content-Type: application/json
+
+{
+    "sqlInjection": "DROP TABLE PRODUCTS",
+    "id": 8,
+    "title": "Microsoft Surface Laptop 4",
+    "description": "Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.",
+    "price": 1499,
+    "discountPercentage": 10.23,
+    "rating": 3,
+    "stock": 68,
+    "brand": "Microsoft Surface",
+    "category": "laptops",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/8/thumbnail.jpg",
+    "images": [
+        "https://cdn.dummyjson.com/product-images/8/1.jpg",
+        "https://cdn.dummyjson.com/product-images/8/2.jpg",
+        "https://cdn.dummyjson.com/product-images/8/3.jpg",
+        "https://cdn.dummyjson.com/product-images/8/4.jpg",
+        "https://cdn.dummyjson.com/product-images/8/thumbnail.jpg"
+    ]
+}
+
+### Borrar una película
+DELETE http://localhost:8989/products/1
+
+### Actualizar una película
+PATCH http://localhost:8989/products/1
+Content-Type: application/json
+
+{
+  "year": 2022,
+  "stock": 3
+}
