@@ -33,6 +33,7 @@ export class ProductController {
 
     const result = await ProductModel.delete({ id })
 
+
     if (result === false) {
       return res.status(404).json({ message: 'Product not found' })
     }

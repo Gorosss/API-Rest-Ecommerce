@@ -1,6 +1,6 @@
 -- Crear la tabla de productos
 CREATE TABLE products (
-    id INT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255),
     description TEXT,
     price DECIMAL(10, 2),
@@ -17,9 +17,8 @@ CREATE TABLE product_images (
     id INT AUTO_INCREMENT PRIMARY KEY,
     product_id INT,
     image_url VARCHAR(255),
-    FOREIGN KEY (product_id) REFERENCES products(id)
+    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
 );
-
 
 
 INSERT INTO products (id, title, description, price, discountPercentage, rating, stock, brand, category, thumbnail)

@@ -33,13 +33,18 @@ Content-Type: application/json
 }
 
 ### DELETE un producto por id
-DELETE http://localhost:8989/products/f9d3098d-b0b6-46cc-b4bf-d7e5328a1d82
+DELETE http://localhost:8989/products/6
 
 ### PATCH un producto por id
-PATCH http://localhost:8989/products/1
+PATCH http://localhost:8989/products/2
 Content-Type: application/json
 
 {
   "year": 2022,
-  "stock": 3
+  "stock": 6,
+  "images": [
+    "https://cdn.dummyjson.com/product-images/2/1.jpg",
+    "https://cdn.dummyjson.com/product-images/2/2.jpg",
+    "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg"
+  ]
 }
