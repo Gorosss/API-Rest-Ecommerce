@@ -21,6 +21,7 @@
     fetch('http://localhost:8989/products')
       .then(res => res.json())
       .then(products => {
+        console.log(products)
         const html = products.map(product => {
           return `
             <article data-id="${product.id}">
@@ -45,7 +46,6 @@
             })
               .then(res => {
                 if (res.ok) {
-                  console.log("first")
                   article.remove()
                 }
               })

@@ -2,6 +2,9 @@ import express, { json } from 'express'
 import { productsRouter } from './routes/products_route.js'
 import { corsMiddleware } from './middlewares/cors_middleware.js'
 
+import dotenv from 'dotenv';
+dotenv.config();
+
 
 const app = express()
 app.use(corsMiddleware())

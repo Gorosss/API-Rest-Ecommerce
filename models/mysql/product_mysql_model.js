@@ -1,6 +1,10 @@
 
 import mysql from 'mysql2/promise'
 
+import dotenv from 'dotenv';
+dotenv.config();
+
+
 const DEFAULT_CONFIG = {
   host: 'localhost',
   user: 'root',
@@ -8,13 +12,17 @@ const DEFAULT_CONFIG = {
   password: '',
   database: 'ecommerce'
 }
+
+
+
 const connectionString = process.env.DATABASE_URL ?? DEFAULT_CONFIG
+
 
 const connection = await mysql.createConnection(connectionString)
 
 export class ProductModel {
   static async getAll({ category }) {
-    let query = `SELECT p.id AS product_id, p.title, p.description, p.price, p.discountPercentage, p.rating, p.stock, p.brand, p.category, p.thumbnail,  GROUP_CONCAT(pi.image_url) AS images
+    let query = `SELECT p.id, p.title, p.description, p.price, p.discountPercentage, p.rating, p.stock, p.brand, p.category, p.thumbnail,  GROUP_CONCAT(pi.image_url) AS images
                  FROM products p
                  LEFT JOIN product_images pi ON p.id = pi.product_id`;
 
@@ -40,7 +48,7 @@ export class ProductModel {
 
   static async getById({ id }) {
     const [products] = await connection.query(
-      `SELECT p.id AS product_id, p.title, p.description, p.price, p.discountPercentage, p.rating, p.stock, p.brand, p.category, p.thumbnail,   GROUP_CONCAT(pi.image_url) AS images
+      `SELECT p.id, p.title, p.description, p.price, p.discountPercentage, p.rating, p.stock, p.brand, p.category, p.thumbnail,   GROUP_CONCAT(pi.image_url) AS images
          FROM products p
          LEFT JOIN product_images pi ON p.id = pi.product_id
          WHERE p.id = ?
@@ -92,7 +100,7 @@ export class ProductModel {
       }
 
       const [products] = await connection.query(
-        `SELECT p.id AS product_id, p.title, p.description, p.price, p.discountPercentage, p.rating, p.stock, p.brand, p.category, p.thumbnail,   GROUP_CONCAT(pi.image_url) AS images
+        `SELECT p.id, p.title, p.description, p.price, p.discountPercentage, p.rating, p.stock, p.brand, p.category, p.thumbnail,   GROUP_CONCAT(pi.image_url) AS images
            FROM products p
            LEFT JOIN product_images pi ON p.id = pi.product_id
            WHERE p.id = ?
@@ -138,6 +146,8 @@ export class ProductModel {
   }
 
   static async update({ id, input }) {
+
+    try {
       const {
         title,
         description,
@@ -207,6 +217,9 @@ export class ProductModel {
       }
   
       return updatedProduct;
+    }catch(e){
+      throw new Error("Error updating product")
+    }
     
   }
   
