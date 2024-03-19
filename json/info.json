@@ -1,0 +1,34 @@
+[
+    {
+        "name": "Ecommerce API",
+        "description": "RESTful API for managing products in an ecommerce platform",
+        "version": "1.0.0",
+        "routes": [
+            {
+                "method": "GET",
+                "path": "/products",
+                "description": "Get all products"
+            },
+            {
+                "method": "GET",
+                "path": "/products/:id",
+                "description": "Get a product by ID"
+            },
+            {
+                "method": "POST",
+                "path": "/products",
+                "description": "Create a new product"
+            },
+            {
+                "method": "PUT",
+                "path": "/products/:id",
+                "description": "Update a product"
+            },
+            {
+                "method": "DELETE",
+                "path": "/products/:id",
+                "description": "Delete a product"
+            }
+        ]
+    }
+]

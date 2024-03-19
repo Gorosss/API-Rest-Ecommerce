@@ -21,7 +21,9 @@ const connectionString = process.env.DATABASE_URL ?? DEFAULT_CONFIG
 const connection = await mysql.createConnection(connectionString)
 
 export class ProductModel {
+  
   static async getAll({ category }) {
+
     let query = `SELECT p.id, p.title, p.description, p.price, p.discountPercentage, p.rating, p.stock, p.brand, p.category, p.thumbnail,  GROUP_CONCAT(pi.image_url) AS images
                  FROM products p
                  LEFT JOIN product_images pi ON p.id = pi.product_id`;
