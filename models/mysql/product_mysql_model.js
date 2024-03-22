@@ -29,13 +29,22 @@ export class ProductModel {
                  LEFT JOIN product_images pi ON p.id = pi.product_id`;
 
     if (category) {
-      const lowerCaseCate = category.toLowerCase();
-      query += ` WHERE LOWER(p.category) = '${lowerCaseCate}'`;
+      query += ` WHERE LOWER(p.category) = ?`;
     }
 
     query += ' GROUP BY p.id;';
 
-    const [products] = await connection.query(query);
+
+    let products; 
+
+    if (category) {
+      const lowerCaseCate = category.toLowerCase();
+      [products] = await connection.query(query, [lowerCaseCate]);
+    }else{
+      [products] = await connection.query(query);
+    }
+
+
 
     products.forEach(product => {
       if (product.images) {
